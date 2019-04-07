@@ -1,0 +1,40 @@
+<!--
+  Generated template for the AdminPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Compte</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card *ngFor="let user of users">
+     <h1><div text-center style="color:black">{{user.prenom}} {{user.nom}}</div></h1>
+      <div text-center>
+        
+        <h1><strong>{{user.pseudo}}</strong></h1>
+                 
+      <button ion-button icon-start clear small (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+          <div>Se déconnecter</div>
+      </button>
+      <button ion-button icon-start clear small (click)="addVisiteur()">
+        <ion-icon name="add-circle"></ion-icon>
+          <div>Ajouter visiteurs</div>
+      </button>
+           
+      <button ion-button icon-start clear small (click)="listeuser()">
+        <ion-icon name="albums"></ion-icon>
+          <div>liste utilisateur</div>
+      </button>
+      </div>
+  </ion-card>
+</ion-content>
+
+

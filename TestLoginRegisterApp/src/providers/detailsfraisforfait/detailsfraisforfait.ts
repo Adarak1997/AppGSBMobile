@@ -12,6 +12,10 @@ export class DetailsfraisforfaitProvider {
     return this.http.get('http://localhost/GSB/api/details_frais_forfait.php');
   }
 
+  getById(idFiche){
+    return this.http.get('http://localhost/GSB/api/details_frais_forfait.php?idFiche=' + idFiche);
+  }
+
   
 
 }

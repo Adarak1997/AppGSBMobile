@@ -4,8 +4,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Storage } from '@ionic/storage';
 
-import { ComptePage } from '../pages/compte/compte';
-import { AccueilPage } from '../pages/accueil/accueil';
+import { ConnexionPage } from '../pages/connexion/connexion';
 
 @Component({
   templateUrl: 'app.html'
@@ -28,9 +27,9 @@ export class MyApp {
 
     this.storage.get('session_storage').then((res)=>{
       if(res == null){
-        this.rootPage = AccueilPage;
+        this.rootPage = ConnexionPage;
       }else{
-        this.rootPage = AccueilPage;
+        this.rootPage = ConnexionPage;
       }
       });
     }

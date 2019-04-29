@@ -5,9 +5,10 @@ import { PostProvider } from '../../providers/post-provider';
 import { Storage } from '@ionic/storage';
 
 
-import { AccueilPage } from '../accueil/accueil';
+
 import { InscriptionPage } from '../inscription/inscription';
 import { ListeuserPage } from '../listeuser/listeuser';
+import { ConnexionPage } from '../connexion/connexion';
 
 /**
  * Generated class for the AdminPage page.
@@ -72,7 +73,7 @@ export class AdminPage {
 
   logout(){
     this.storage.clear();
-    this.appCtrl.getRootNav().setRoot(AccueilPage);
+    this.appCtrl.getRootNav().setRoot(ConnexionPage);
     const toast = this.toastCtrl.create({
       message: 'déconnexion réussie',
       duration: 3000

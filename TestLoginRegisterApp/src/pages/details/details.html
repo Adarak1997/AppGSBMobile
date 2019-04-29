@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>details</ion-title>
+    <ion-title>{{moisLibelle[fiche.mois - 1]}} {{fiche.annee}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,17 +15,38 @@
 
 <ion-content padding>
 
+    <ion-list>
+      <ion-list-header>
+        Vos frais forfaitisés ({{totalFraisForfaitises}})
+      </ion-list-header>
+
+    <ion-item *ngFor="let details of detailsFraisForfait">
+        {{details.quantite}}x {{details.libelle}}
+          <span item-end>
+            {{details.quantite * details.montant}}€
+          </span>
+     </ion-item> 
+    </ion-list>
     
-
-    <ion-card *ngFor="let details of detailsFraisForfait">
-
-        <h1 text-center>Quantité :{{details.quantite}}</h1>
-        <div text-center>
-          <strong>{{details.frais_forfait.libelle}}</strong>
-            
+    <br><br>
         
-        </div>
-         
-          </ion-card>
+    <ion-list>
+    <ion-list-header>
+    Vos frais non forfaitisés ({{totalFraisNonForfaitises}})
+    </ion-list-header>
 
+      <ion-item *ngFor="let detailsnon of FraisNonForfaitises">
+        {{detailsnon.libelle}}
+        <span item-end>{{detailsnon.montant}}€</span>
+      </ion-item>
+    </ion-list>    
+             
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+      Total : {{total}}€
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

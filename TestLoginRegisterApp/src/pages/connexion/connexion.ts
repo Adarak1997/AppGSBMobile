@@ -88,14 +88,15 @@ export class ConnexionPage {
 
           
         }else{
-          const toast = this.toastCtrl.create({
+          let toast = this.toastCtrl.create({
             message: alertpesan,
             duration: 3000
           });
           toast.present(); 
         }
       });
-
+    
+    
 
     }else{
       const toast = this.toastCtrl.create({

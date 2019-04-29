@@ -6,6 +6,7 @@ import { DetailsPage } from '../details/details';
 import { FichefraisProvider} from '../../providers/fichefrais/fichefrais';
 import { Storage } from '@ionic/storage';
 
+
 /**
  * Generated class for the FichePage page.
  *
@@ -19,42 +20,62 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'fiche.html',
 })
 export class FichePage {
+
+  moisLibelle = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
+
   ficheFrais: FicheFrais[];
-  anggota: any;
+  total: number;
+
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public ficheFraisProvider:FichefraisProvider, private storage: Storage) {
   
 
-    ficheFraisProvider.getAll().subscribe((datas)=>{
-      this.ficheFrais = datas as FicheFrais[];
-      debugger;
+    // ficheFraisProvider.getAll().subscribe((datas)=>{
+    //   this.ficheFrais = datas as FicheFrais[];
+    //   debugger;
+    // });
+      this.storage.get('session_storage').then((datas) =>{
+        ficheFraisProvider.getById(datas['id']).subscribe((d)=>{
+        this.ficheFrais = d as FicheFrais[];
+        this.total = this.ficheFrais.length;
+        console.log(d);
+        debugger;
+        
+      });
     });
   }
+
+  
+
 
     
 
-  ionViewWillEnter(){
-    this.storage.get('session_storage').then((datas)=>{     
-      console.log(datas);
-    this.storage.set('fiche', datas);
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad FichePage');
+  }
+  
+  refresh(){
+    this.storage.get('session_storage').then((datas) =>{
+      this.ficheFraisProvider.getById(datas['id']).subscribe((d)=>{
+      this.ficheFrais = d as FicheFrais[];
+      this.total = this.ficheFrais.length;
+      
       
     });
-  }
-
+  });
+}
   
 
   ajoutfiche(){
     this.navCtrl.push(AjoutfichePage);
   }
 
-  details(){
+  details(fiche){
     
-    this.ficheFraisProvider.getAll().subscribe((data) =>{
-    this.storage.set('fiche', data);
-    this.navCtrl.push(DetailsPage);
-    console.log(data);
-  });
+    this.navCtrl.push('DetailsPage', { fiche: fiche });
+  }
  
 
   }
-}
+

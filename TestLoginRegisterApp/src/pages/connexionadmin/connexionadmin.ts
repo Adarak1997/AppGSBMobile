@@ -30,7 +30,7 @@ export class ConnexionadminPage {
     console.log('ionViewDidLoad ConnexionadminPage');
   }
 
-  connexion(){
+  connexion(_data){
     if(this.pseudo == "admin" && this.mdp == "admin" && this.role_id =="3"){
       let body = {
         pseudo: this.pseudo,

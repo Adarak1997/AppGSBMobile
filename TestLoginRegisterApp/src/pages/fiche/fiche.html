@@ -6,9 +6,13 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="red">
     <ion-title>Fiche de frais</ion-title>
-
+    <ion-buttons end>
+      <button ion-button icon-only color="blue" (click)="refresh()">
+        <ion-icon name="refresh"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -16,28 +20,34 @@
 
 <ion-content padding>
 
-    <div text-center>
+    <!-- <div text-center>
         <button ion-button color="red" style="width:250px; height: 70px" class="bouton1" (click)="ajoutfiche()">Ajouter une fiche de frais</button>
+  </div> -->
+
+  <div text-center>
+    <h4>{{ total }} résultat(s)</h4>
   </div>
 
     <ion-card *ngFor="let fiche of ficheFrais">
-     
+    
       
-
-        <h1 text-center>{{fiche.mois}}/{{fiche.annee}}</h1>
+<br>
+        <h1 text-center>{{moisLibelle[fiche.mois - 1]}} {{fiche.annee}}</h1>
+        
+        
         <div text-center>
           <strong></strong>
           <strong></strong>
-            <br><br>
+            <br>
           
        
-          
-           <button ion-button color="secondary" round class="bouton1">{{fiche.etat.libelle}}</button>
-           <button ion-button color="light" round class="bouton2" (click)="details()">Details</button>
+          <button ion-button color="danger" round class="bouton1" *ngIf="fiche.etat.libelle =='en attente'">{{fiche.etat.libelle}}</button>
+           <button ion-button color="secondary" round class="bouton1" *ngIf="fiche.etat.libelle =='valide'">{{fiche.etat.libelle}}</button>
+           <button ion-button color="light" round class="bouton2" (click)="details(fiche)">Details</button>
         </div>
-       
+         
           </ion-card>
 
-      
+    
 
 </ion-content>

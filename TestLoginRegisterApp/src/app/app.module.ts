@@ -22,10 +22,13 @@ import { PostProvider } from '../providers/post-provider';
 import { IonicStorageModule } from '@ionic/storage';
 import { AjoutfichePage } from '../pages/ajoutfiche/ajoutfiche';
 import { FichefraisProvider } from '../providers/fichefrais/fichefrais';
+import { DetailsProvider } from '../providers/details/details';
 import { AuthProvider } from '../providers/auth/auth';
 import { ConnexionadminPage } from '../pages/connexionadmin/connexionadmin';
 import { DetailsfraisforfaitProvider} from '../providers/detailsfraisforfait/detailsfraisforfait';
+import { FraisnonforfaitProvider } from '../providers/fraisnonforfait/fraisnonforfait';
 import { UtilisateurProvider } from '../providers/utilisateur/utilisateur';
+import { User } from '../providers/user/user';
 import { ModifierPage } from '../pages/modifier/modifier';
 
 @NgModule({
@@ -39,7 +42,6 @@ import { ModifierPage } from '../pages/modifier/modifier';
     ComptePage,
     FichePage,
     AjoutfichePage,
-    DetailsPage,
     AdminPage,
     ListeuserPage,
     ModifierPage
@@ -51,7 +53,9 @@ import { ModifierPage } from '../pages/modifier/modifier';
     HttpClientModule,
     CommonModule,
     IonicStorageModule.forRoot(),
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp,{
+      backButtonText: 'Retour',
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -64,7 +68,6 @@ import { ModifierPage } from '../pages/modifier/modifier';
     ComptePage,
     FichePage,
     AjoutfichePage,
-    DetailsPage,
     AdminPage,
     ListeuserPage,
     ModifierPage
@@ -76,8 +79,11 @@ import { ModifierPage } from '../pages/modifier/modifier';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FichefraisProvider,
     DetailsfraisforfaitProvider,
+    FraisnonforfaitProvider,
+    DetailsProvider,
     UtilisateurProvider,
-    AuthProvider
+    AuthProvider,
+    User
   ]
 })
 export class AppModule {}

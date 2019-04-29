@@ -20,6 +20,10 @@ export class FichefraisProvider {
     return this.http.get('http://localhost/GSB/api/fiche_frais.php');
   }
 
+  getById(idVisiteur){
+    return this.http.get('http://localhost/GSB/api/fiche_frais.php?idVisiteur=' + idVisiteur);
+  }
+
   
  
 

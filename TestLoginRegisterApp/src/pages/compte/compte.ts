@@ -5,7 +5,7 @@ import { PostProvider } from '../../providers/post-provider';
 import { Storage } from '@ionic/storage';
 
 import { FichePage } from '../fiche/fiche';
-import { AccueilPage } from '../accueil/accueil';
+import { ConnexionPage } from '../connexion/connexion';
 
 /**
  * Generated class for the ComptePage page.
@@ -63,12 +63,13 @@ export class ComptePage {
   }
 
 openFiche(){
+  
   this.navCtrl.push(FichePage);
 }
 
 logout(){
   this.storage.clear();
-  this.appCtrl.getRootNav().setRoot(AccueilPage);
+  this.appCtrl.getRootNav().setRoot(ConnexionPage);
   const toast = this.toastCtrl.create({
     message: 'déconnexion réussie',
     duration: 3000

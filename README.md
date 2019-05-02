@@ -1,7 +1,7 @@
 # AppGSBMobile
 
 
-Installation
+# Installation
 Cloner le projet dans WAMP ou MAMP
 Ouvrir le terminal puis naviguer jusqu'au dossier ApplicationFraisMobile
 Entrer la commande npm install

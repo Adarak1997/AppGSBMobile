@@ -16,6 +16,6 @@ export class DetailsProvider {
   }
 
   getDetailsById(id){
-      return this.http.get('http://localhost/GSB/api/details.php?fiche_frais_id=' + id);
+      return this.http.get('http://localhost/AppGSBMobile/ApplicationWeb/details.php?fiche_frais_id=' + id);
   }
 }

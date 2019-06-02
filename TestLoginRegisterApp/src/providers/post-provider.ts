@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class PostProvider {
-    server : string = "http://localhost/TestLoginIonic/server_api/"
+    server : string = "http://localhost/AppGSBMobile/server_api/"
 
     constructor(public http: Http){
 
@@ -19,7 +19,6 @@ export class PostProvider {
         let headers = new Headers({'Content-Type': type});
         let options = new RequestOptions({headers: headers});
 
-        return this.http.post(this.server + file, JSON.stringify(body), options)
-        .map(res => res.json());   
+        return this.http.post(this.server + file, JSON.stringify(body), options).map(res => res.json());   
     }   
 }

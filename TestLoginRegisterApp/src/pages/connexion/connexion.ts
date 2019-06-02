@@ -95,6 +95,8 @@ export class ConnexionPage {
           toast.present(); 
         }
       });
+      
+
     
     
 

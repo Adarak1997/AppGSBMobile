@@ -21,9 +21,18 @@
       </ion-list-header>
 
     <ion-item *ngFor="let details of detailsFraisForfait">
-        {{details.quantite}}x {{details.libelle}}
+      <h2 *ngIf="details.libelle =='nuitee'">{{details.quantite}}x nuit(s)</h2>
+      <h2 *ngIf="details.libelle =='kilometrage'">{{details.quantite}}x kilomètre(s)</h2>
+      <h2 *ngIf="details.libelle =='repas_midi'">{{details.quantite}}x repas midi</h2>
+      <h2 *ngIf="details.libelle =='relais_etape'">{{details.quantite}}x relais étape</h2>
           <span item-end>
             {{details.quantite * details.montant}}€
+          </span>
+          <span *ngIf="details.etat == 2" item-end>
+            <ion-icon name="checkmark" color="secondary"></ion-icon>
+          </span>
+          <span *ngIf="details.etat == 3" item-end>
+            <ion-icon name="close" color="danger"></ion-icon>
           </span>
      </ion-item> 
     </ion-list>
@@ -38,6 +47,12 @@
       <ion-item *ngFor="let detailsnon of FraisNonForfaitises">
         {{detailsnon.libelle}}
         <span item-end>{{detailsnon.montant}}€</span>
+        <span *ngIf="detailsnon.etat == 2" item-end>
+          <ion-icon name="checkmark" color="secondary"></ion-icon>
+        </span>
+        <span *ngIf="detailsnon.etat == 3" item-end>
+          <ion-icon name="close" color="danger"></ion-icon>
+        </span>
       </ion-item>
     </ion-list>    
              

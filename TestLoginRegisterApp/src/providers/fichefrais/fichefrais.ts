@@ -17,11 +17,11 @@ export class FichefraisProvider {
   }
 
   getAll(){
-    return this.http.get('http://localhost/GSB/api/fiche_frais.php');
+    return this.http.get('http://localhost/AppGSBMobile/ApplicationWeb/fiche_frais.php');
   }
 
   getById(idVisiteur){
-    return this.http.get('http://localhost/GSB/api/fiche_frais.php?idVisiteur=' + idVisiteur);
+    return this.http.get('http://localhost/AppGSBMobile/ApplicationWeb/fiche_frais.php?idVisiteur=' + idVisiteur);
   }
 
   

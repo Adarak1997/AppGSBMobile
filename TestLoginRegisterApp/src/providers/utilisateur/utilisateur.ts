@@ -16,7 +16,7 @@ export class UtilisateurProvider {
   }
 
   getAll(){
-    return this.http.get('http://localhost/GSB/api/utilisateur.php');
+    return this.http.get('http://localhost/AppGSBMobile/ApplicationWeb/utilisateur.php');
   }
 
 }

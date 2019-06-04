@@ -3,7 +3,6 @@ import { IonicPage, NavController, NavParams, AlertController} from 'ionic-angul
 import { FraisForfaitises } from './../../models/fraisforfaitises';
 import { FraisNonForfaitises } from '../../models/fraisnonforfaitises';
 import { FicheFrais } from '../../models/fichefrais';
-import { Storage } from '@ionic/storage';
 
 import { FichefraisProvider} from './../../providers/fichefrais/fichefrais';
 /**
@@ -32,7 +31,7 @@ export class DetailsPage {
   
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public ficheFraisProvider: FichefraisProvider ,private storage: Storage ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public ficheFraisProvider: FichefraisProvider ) {
   
     let fiche = navParams.data['fiche'];
     this.fiche = fiche;

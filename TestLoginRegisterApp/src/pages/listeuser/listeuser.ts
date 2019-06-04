@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Utilisateur } from '../../models/utilisateur';
 import { UtilisateurProvider} from '../../providers/utilisateur/utilisateur';
-import { ModifierPage } from '../modifier/modifier';
 /**
  * Generated class for the ListeuserPage page.
  *
@@ -32,9 +31,5 @@ export class ListeuserPage {
     console.log('ionViewDidLoad ListeuserPage');
   }
 
-  modifier(){
-    
-    this.navCtrl.push(ModifierPage);
-  }
 
 }

@@ -1,15 +1,12 @@
-//import { FicheFraisPage } from './../fiche-frais/fiche-frais';
 import { Utilisateur } from './../../models/utilisateur';
 import { Component } from '@angular/core';
-//import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import { AdminPage } from './../admin/admin';
-//import { TabsPage } from './../tabs/tabs';
 
 
 import { User } from '../../providers/user/user';
 import { ComptePage } from '../compte/compte';
-import { Storage } from '@ionic/storage';
+
 
 @IonicPage()
 @Component({
@@ -23,7 +20,7 @@ export class ConnexionPage {
 
   constructor(public navCtrl: NavController,
     public user: User,
-    public toastCtrl: ToastController, private storage: Storage
+    public toastCtrl: ToastController
     ) {
       
   }
@@ -36,7 +33,13 @@ export class ConnexionPage {
         this.user.prenom = resp['prenom'];
         this.user.pseudo = resp['pseudo'];
         this.user.role_id = resp['role_id'];
-        this.navCtrl.push(AdminPage);
+        this.navCtrl.setRoot(AdminPage);
+        let toast = this.toastCtrl.create({
+          message: 'Connexion réussi',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
       }
   
       else if (this.utilisateur.role_id = 1 && resp['succes']) {
@@ -45,7 +48,13 @@ export class ConnexionPage {
         this.user.prenom = resp['prenom'];
         this.user.pseudo = resp['pseudo'];
         this.user.role_id = resp['role_id'];
-        this.navCtrl.push(ComptePage);
+        this.navCtrl.setRoot(ComptePage);
+        let toast = this.toastCtrl.create({
+          message: 'Connexion réussi',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
           
       } 
      

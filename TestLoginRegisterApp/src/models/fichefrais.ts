@@ -1,8 +1,4 @@
 import { Etat } from "./etat";
-import { Utilisateur } from "./utilisateur";
-
-//import { FraisNonForfaitises } from '/FraisNonForfaitises';
-//import { FraisForfaitises } from '../FraisForfaitises';
 
 export class FicheFrais{
     id: number;

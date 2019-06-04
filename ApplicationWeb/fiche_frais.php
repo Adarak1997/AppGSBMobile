@@ -7,10 +7,10 @@ $user_name = 'root';
 $password = '';
 
 $bdd = new PDO("mysql:host=$host_name; dbname=$database;", $user_name, $password);
-$query = $bdd->prepare('SELECT fiche_frais.id as id, fiche_frais.mois, fiche_frais.annee, etat.id as etat_id, etat.libelle
+$query = $bdd->prepare("SELECT fiche_frais.id as id, fiche_frais.mois, fiche_frais.annee, etat.id as etat_id, etat.libelle
  FROM fiche_frais
  inner join etat on fiche_frais.etat_id = etat.id
-  WHERE utilisateur_id = :utilisateur ORDER BY annee DESC, mois DESC');
+  WHERE utilisateur_id = :utilisateur  ORDER BY annee DESC, mois DESC");
 $query->bindParam(':utilisateur', $_GET['utilisateur']);
 $query->execute();
 $fiches = $query->fetchAll();

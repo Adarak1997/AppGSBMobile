@@ -8,7 +8,7 @@ $password = '';
 
 $bdd = new PDO("mysql:host=$host_name; dbname=$database;", $user_name, $password);
 
-$query = 'SELECT * From utilisateur AS u, role AS r WHERE r.id = u.role_id AND role_id = "1"';
+$query = 'SELECT * From utilisateur AS u, role AS r WHERE r.id = u.role_id AND role_id != "3"';
 $d = $bdd->query($query);
 $user = $d->fetchAll();
 
@@ -21,6 +21,7 @@ for($i=0; $i < count($user); $i++){
     $retour[$i]['date_naissance'] = $user[$i]['date_naissance'];
     $retour[$i]['adresse'] = $user[$i]['adresse'];
     $retour[$i]['ville'] = $user[$i]['ville'];
+    $retour[$i]['tel'] = $user[$i]['tel'];
     $retour[$i]['code_postal'] = $user[$i]['code_postal'];
     $retour[$i]['date_embauche'] = $user[$i]['date_embauche'];
     $retour[$i]['pseudo'] = $user[$i]['pseudo'];

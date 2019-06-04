@@ -28,11 +28,14 @@
           <span item-end>
             {{fraisforfaitise.quantite * fraisforfaitise.montant}}€
           </span>
+          <span *ngIf="fraisforfaitise.etat == 1" item-end>
+            <ion-icon name="clipboard" color="primary" title="En cours"></ion-icon>
+          </span>
           <span *ngIf="fraisforfaitise.etat == 2" item-end>
-            <ion-icon name="checkmark" color="secondary"></ion-icon>
+            <ion-icon name="checkmark" color="secondary" title="Validé"></ion-icon>
           </span>
           <span *ngIf="fraisforfaitise.etat == 3" item-end>
-            <ion-icon name="close" color="danger"></ion-icon>
+            <ion-icon name="close" color="danger" title="Refusé"></ion-icon>
           </span>
      </ion-item> 
     </ion-list>
@@ -47,11 +50,14 @@
       <ion-item *ngFor="let detailsnon of fraisNonForfaitises">
         {{detailsnon.libelle}}
         <span item-end>{{detailsnon.montant}}€</span>
+        <span *ngIf="detailsnon.etat == 1" item-end>
+          <ion-icon name="clipboard" color="primary" title="En cours"></ion-icon>
+        </span>
         <span *ngIf="detailsnon.etat == 2" item-end>
-          <ion-icon name="checkmark" color="secondary"></ion-icon>
+          <ion-icon name="checkmark" color="secondary" title="Validé"></ion-icon>
         </span>
         <span *ngIf="detailsnon.etat == 3" item-end>
-          <ion-icon name="close" color="danger"></ion-icon>
+          <ion-icon name="close" color="danger" title="Refusé"></ion-icon>
         </span>
       </ion-item>
     </ion-list>    

@@ -8,8 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ConnexionPage } from '../pages/connexion/connexion';
-import { InscriptionPage } from '../pages/inscription/inscription';
-import { AccueilPage } from '../pages/accueil/accueil';
 import { ComptePage } from '../pages/compte/compte';
 import { FichePage } from '../pages/fiche/fiche';
 import { DetailsPage } from '../pages/details/details';
@@ -18,34 +16,23 @@ import { ListeuserPage } from '../pages/listeuser/listeuser';
 
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
-import { PostProvider } from '../providers/post-provider';
 import { IonicStorageModule } from '@ionic/storage';
-import { AjoutfichePage } from '../pages/ajoutfiche/ajoutfiche';
 import { FichefraisProvider } from '../providers/fichefrais/fichefrais';
-import { DetailsProvider } from '../providers/details/details';
-import { AuthProvider } from '../providers/auth/auth';
 import { Api } from '../providers/api/api';
-import { ConnexionadminPage } from '../pages/connexionadmin/connexionadmin';
-import { DetailsfraisforfaitProvider} from '../providers/detailsfraisforfait/detailsfraisforfait';
-import { FraisnonforfaitProvider } from '../providers/fraisnonforfait/fraisnonforfait';
 import { UtilisateurProvider } from '../providers/utilisateur/utilisateur';
 import { User } from '../providers/user/user';
-import { ModifierPage } from '../pages/modifier/modifier';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     ConnexionPage,
-    ConnexionadminPage,
-    InscriptionPage,
-    AccueilPage,
     ComptePage,
     FichePage,
-    AjoutfichePage,
     AdminPage,
-    ListeuserPage,
-    ModifierPage
+    DetailsPage,
+    ListeuserPage
+
      
   ],
   imports: [
@@ -63,27 +50,18 @@ import { ModifierPage } from '../pages/modifier/modifier';
     MyApp,
     HomePage,
     ConnexionPage,
-    ConnexionadminPage,
-    InscriptionPage,
-    AccueilPage,
     ComptePage,
     FichePage,
-    AjoutfichePage,
+    DetailsPage,
     AdminPage,
-    ListeuserPage,
-    ModifierPage
+    ListeuserPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    PostProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     FichefraisProvider,
-    DetailsfraisforfaitProvider,
-    FraisnonforfaitProvider,
-    DetailsProvider,
     UtilisateurProvider,
-    AuthProvider,
     User,
     Api
   ]

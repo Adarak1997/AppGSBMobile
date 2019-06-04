@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { FicheFrais } from './../../models/fichefrais';
-import { AjoutfichePage } from '../ajoutfiche/ajoutfiche';
 import { DetailsPage } from '../details/details';
 import { FichefraisProvider} from './../../providers/fichefrais/fichefrais';
-import { Storage } from '@ionic/storage';
+
 
 
 /**
@@ -28,7 +27,7 @@ export class FichePage {
 
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public ficheFraisProvider:FichefraisProvider, private storage: Storage) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public ficheFraisProvider:FichefraisProvider) {
   
     ficheFraisProvider.getAll().subscribe((datas) =>{
       this.ficheFrais = datas['fiche_frais'] as Array<FicheFrais>;

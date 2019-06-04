@@ -18,6 +18,7 @@ for($i=0; $i < count($user); $i++){
     $retour[$i]['nom'] = $user[$i]['nom'];
     $retour[$i]['prenom'] = $user[$i]['prenom'];
     $retour[$i]['email'] = $user[$i]['email'];
+    $retour[$i]['tel'] = $user[$i]['tel'];
     $retour[$i]['date_naissance'] = $user[$i]['date_naissance'];
     $retour[$i]['adresse'] = $user[$i]['adresse'];
     $retour[$i]['ville'] = $user[$i]['ville'];

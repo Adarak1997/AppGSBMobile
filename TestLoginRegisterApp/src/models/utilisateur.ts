@@ -5,6 +5,7 @@ export class Utilisateur {
     nom:string;
     prenom:string;
     email:string;
+    tel:string;
     date_naissance:string;
     adresse:string;
     ville:string;

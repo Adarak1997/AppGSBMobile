@@ -1,111 +1,73 @@
+//import { FicheFraisPage } from './../fiche-frais/fiche-frais';
+import { Utilisateur } from './../../models/utilisateur';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { PostProvider } from '../../providers/post-provider';
+//import { TranslateService } from '@ngx-translate/core';
+import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { AdminPage } from './../admin/admin';
+//import { TabsPage } from './../tabs/tabs';
+
+
+import { User } from '../../providers/user/user';
+import { ComptePage } from '../compte/compte';
 import { Storage } from '@ionic/storage';
-
-import { ComptePage} from '../compte/compte';
-import { AdminPage } from '../admin/admin';
-
-
-/**
- * Generated class for the ConnexionPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
   selector: 'page-connexion',
-  templateUrl: 'connexion.html',
+  templateUrl: 'connexion.html'
 })
 export class ConnexionPage {
-
-  pseudo: string;
-  mdp: string;
-  role_id : string = "1";
   
-  
-  
+  utilisateur = new Utilisateur();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private postPvdr: PostProvider, private storage: Storage) {
-  }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ConnexionPage');
-  }
-
-  connexion(){
-    if(this.pseudo == "admin" && this.mdp == "admin"){
-      let body = {
-        pseudo: this.pseudo,
-        mdp: this.mdp,
-        role_id: this.role_id,
-        aksi: 'connexion'
-      };
-
-      this.postPvdr.postData(body, 'file_aksi.php').subscribe((data) =>{
-        var alertpesan = data.msg;
-        if(data.success){
-          this.storage.set('session_storage', data.result);
-          this.navCtrl.setRoot(AdminPage);
-          const toast = this.toastCtrl.create({
-            message: 'connexion réussie',
-            duration: 3000
-          });
-          toast.present(); 
-          console.log(data);
-
-          
-        }else{
-          const toast = this.toastCtrl.create({
-            message: alertpesan,
-            duration: 3000
-          });
-          toast.present(); 
-        }
-      });
-
-    }else if(this.pseudo != "" && this.mdp != "" && this.role_id =="1"){
-      let body = {
-        pseudo: this.pseudo,
-        mdp: this.mdp,
-        role_id: this.role_id,
-        aksi: 'connexion'
-      };
-
-      this.postPvdr.postData(body, 'file_aksi.php').subscribe((data) =>{
-        var alertpesan = data.msg;
-        if(data.success){
-          this.storage.set('session_storage', data.result);
-          this.navCtrl.setRoot(ComptePage);
-          const toast = this.toastCtrl.create({
-            message: 'connexion réussie',
-            duration: 3000
-          });
-          toast.present(); 
-          console.log(data);
-
-          
-        }else{
-          let toast = this.toastCtrl.create({
-            message: alertpesan,
-            duration: 3000
-          });
-          toast.present(); 
-        }
-      });
+  constructor(public navCtrl: NavController,
+    public user: User,
+    public toastCtrl: ToastController, private storage: Storage
+    ) {
       
+  }
 
+  connexion() {
+    this.user.login(this.utilisateur).subscribe((resp) => {
+      if (this.utilisateur.pseudo == "admin" && this.utilisateur.mdp =="admin" && resp['succesAdmin']) {
+        this.user.utilisateurId = resp['utilisateur_id'];
+        this.user.nom = resp['nom'];
+        this.user.prenom = resp['prenom'];
+        this.user.pseudo = resp['pseudo'];
+        this.user.role_id = resp['role_id'];
+        this.navCtrl.push(AdminPage);
+      }
+  
+      else if (this.utilisateur.role_id = 1 && resp['succes']) {
+        this.user.utilisateurId = resp['utilisateur_id'];
+        this.user.nom = resp['nom'];
+        this.user.prenom = resp['prenom'];
+        this.user.pseudo = resp['pseudo'];
+        this.user.role_id = resp['role_id'];
+        this.navCtrl.push(ComptePage);
+          
+      } 
+     
     
     
-
-    }else{
-      const toast = this.toastCtrl.create({
-        message: 'pseudo ou mot de passe incorrect',
-        duration: 3000
+      else {
+        let toast = this.toastCtrl.create({
+          message: 'Identifiants incorrects',
+          duration: 3000,
+          position: 'bottom'
+        });
+        toast.present();
+      }
+    }, (err) => {
+      // Unable to log in
+      let toast = this.toastCtrl.create({
+        message: 'Une erreur est survenue',
+        duration: 3000,
+        position: 'bottom'
       });
-      toast.present(); 
+      toast.present();
+    });
   }
 }
-}
+

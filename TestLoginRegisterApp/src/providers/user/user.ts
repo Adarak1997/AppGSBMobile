@@ -3,7 +3,7 @@ import 'rxjs/add/operator/toPromise';
 
 import { Injectable } from '@angular/core';
 
-
+import { Api } from '../api/api';
 import { Utilisateur } from '../../models/utilisateur';
 
 @Injectable()
@@ -12,8 +12,9 @@ export class User {
   nom: string;
   prenom: string;
   pseudo: string;
+  role_id: number;
 
-  constructor(public http: HttpClient) { }
+  constructor(public api: Api) { }
 
   login(utilisateur: Utilisateur) {
     let httpParams = new HttpParams();
@@ -23,7 +24,14 @@ export class User {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
     };
     
-    return this.http.post('http://localhost/GSB/api/details.php', httpParams, options);
+    return this.api.post('connexion.php', httpParams, options);
   }
 
+  logout() {
+    this.utilisateurId = null;
+    this.nom = null;
+    this.prenom = null;
+    this.pseudo = null;
+    this.role_id = null;
+  }
 }

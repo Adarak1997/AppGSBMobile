@@ -19,23 +19,24 @@
     <br><br>
       <h1 ion-text color="dark" text-center>Bienvenue sur notre application de gestion de frais !!</h1>
     <br><br>
-
+<form (submit)="connexion()">
   <ion-list>
 
     <ion-item>
       <ion-label>Pseudo</ion-label>
-      <ion-input type="text" [(ngModel)]="pseudo"></ion-input>
+      <ion-input type="email" [(ngModel)]="utilisateur.pseudo" name="email"></ion-input>
     </ion-item>
 
     <ion-item>
         <ion-label>Mot de passe</ion-label>
-        <ion-input type="password" [(ngModel)]="mdp"></ion-input>
+        <ion-input type="password" [(ngModel)]="utilisateur.mdp" name="password"></ion-input>
       </ion-item>
-  </ion-list>
-
-  <div>
-    <button ion-button color="danger" block (click)="connexion()">Se connecter</button>
+      <div>
+    <button ion-button color="danger" block>Se connecter</button>
   </div>
+  </ion-list>
+</form>
+  
 
   
 

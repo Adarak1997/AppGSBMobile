@@ -44,7 +44,7 @@ if($postjson['aksi']=="add_register"){
 
 elseif($postjson['aksi']=="connexion"){
     $mdp = md5($postjson['mdp']);
-    $query = mysqli_query($mysqli, "SELECT * FROM utilisateur WHERE pseudo='$postjson[pseudo]' AND mdp='$mdp'");
+    $query = mysqli_query($mysqli, "SELECT * FROM utilisateur WHERE pseudo='$postjson[pseudo]' AND mdp='$mdp' AND role_id='$postjson[role_id]'");
     $check = mysqli_num_rows($query);
 
     if($check>0){

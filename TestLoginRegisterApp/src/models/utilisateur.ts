@@ -12,5 +12,5 @@ export class Utilisateur {
     date_embauche:string;
     pseudo:string;
     mdp:string;
-    role_id:Role;
+    role_id:number;
 }

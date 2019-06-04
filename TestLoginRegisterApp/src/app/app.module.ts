@@ -24,6 +24,7 @@ import { AjoutfichePage } from '../pages/ajoutfiche/ajoutfiche';
 import { FichefraisProvider } from '../providers/fichefrais/fichefrais';
 import { DetailsProvider } from '../providers/details/details';
 import { AuthProvider } from '../providers/auth/auth';
+import { Api } from '../providers/api/api';
 import { ConnexionadminPage } from '../pages/connexionadmin/connexionadmin';
 import { DetailsfraisforfaitProvider} from '../providers/detailsfraisforfait/detailsfraisforfait';
 import { FraisnonforfaitProvider } from '../providers/fraisnonforfait/fraisnonforfait';
@@ -83,7 +84,8 @@ import { ModifierPage } from '../pages/modifier/modifier';
     DetailsProvider,
     UtilisateurProvider,
     AuthProvider,
-    User
+    User,
+    Api
   ]
 })
 export class AppModule {}

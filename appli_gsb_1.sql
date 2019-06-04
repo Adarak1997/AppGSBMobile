@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  Dim 02 juin 2019 à 17:00
+-- Généré le :  mar. 04 juin 2019 à 12:53
 -- Version du serveur :  5.7.21
 -- Version de PHP :  5.6.35
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `details_frais_forfait` (
   KEY `fk_details_frais_forfait_frais_forfait` (`frais_forfait_id`),
   KEY `fk_details_frais_forfait_fiche_frais` (`fiche_frais_id`),
   KEY `etat_id` (`etat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `details_frais_forfait`
@@ -50,8 +50,12 @@ INSERT INTO `details_frais_forfait` (`id`, `quantite`, `frais_forfait_id`, `fich
 (2, 5, 4, 19, 1),
 (3, 3, 2, 19, 1),
 (4, 3, 3, 19, 1),
-(5, 5, 4, 20, 2),
-(6, 100, 1, 20, 1);
+(5, 5, 4, 20, 1),
+(6, 100, 1, 20, 1),
+(7, 100, 1, 21, 2),
+(8, 3, 4, 21, 2),
+(9, 5, 3, 22, 2),
+(10, 5, 3, 23, 2);
 
 -- --------------------------------------------------------
 
@@ -69,17 +73,18 @@ CREATE TABLE IF NOT EXISTS `details_frais_non_forfait` (
   PRIMARY KEY (`id`),
   KEY `fk_details_frais_non_forfait_fiche_frais` (`fiche_frais_id`),
   KEY `fk_details_frais_non_forfait_etat` (`etat_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `details_frais_non_forfait`
 --
 
 INSERT INTO `details_frais_non_forfait` (`id`, `libelle`, `montant`, `fiche_frais_id`, `etat_id`) VALUES
-(1, 'pot de départ', '130', 19, 1),
-(2, 'repas d\'affaire', '150', 19, 1),
-(3, 'concert', '90', 20, 2),
-(4, 'voyage d\'affaire', '0', 20, 3);
+(3, 'concert', '90', 20, 1),
+(4, 'voyage d\'affaire', '0', 20, 1),
+(5, 'repas d\'affaire', '150', 21, 2),
+(7, 'concert', '90', 23, 2),
+(8, 'repas', '90', 19, 1);
 
 -- --------------------------------------------------------
 
@@ -119,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `fiche_frais` (
   PRIMARY KEY (`id`),
   KEY `fk_fiche_frais_etat` (`etat_id`),
   KEY `fk_fiche_frais_utilisateur` (`utilisateur_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `fiche_frais`
@@ -127,7 +132,10 @@ CREATE TABLE IF NOT EXISTS `fiche_frais` (
 
 INSERT INTO `fiche_frais` (`id`, `mois`, `annee`, `etat_id`, `utilisateur_id`) VALUES
 (19, 6, 2019, 1, 30),
-(20, 5, 2019, 1, 30);
+(20, 5, 2019, 1, 30),
+(21, 4, 2019, 2, 30),
+(22, 3, 2019, 2, 30),
+(23, 2, 2019, 2, 30);
 
 -- --------------------------------------------------------
 
@@ -205,9 +213,9 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `email`, `tel`, `date_naissance`, `adresse`, `ville`, `code_postal`, `date_embauche`, `pseudo`, `mdp`, `role_id`) VALUES
-(28, 'DURAND', 'Jean', 'jeandurand@gsb.com', '0658425147', '1985-04-02', '7 rue Jean Jaurès', 'Lyon', '69007', '2007-08-05', 'admin', '21232f297a57a5a743894a0e4a801fc3', 3),
-(29, 'HENRY', 'Jade', 'jadehenry@gsb.com', '0654238754', '1992-08-30', '250 Rue Victor Hugo ', 'Lyon', '69004', '2016-08-07', 'comptable', '0230782c6665a4465ee7ddaf7207935a', 2),
-(30, 'BERNARD', 'Christophe', 'bernardchristophe@gsb.com', '0621253954', '1987-01-04', '9 Avenue Michel ', 'St-Genis', '01630', '2009-08-05', 'visiteur', 'dcaa6e60155776107c638af755498759', 1);
+(28, 'DURAND', 'Jean', 'jean.durand@gsb.com', '0658425147', '1985-04-02', '7 rue Jean Jaurès', 'Lyon', '69007', '2007-08-05', 'admin', '21232f297a57a5a743894a0e4a801fc3', 3),
+(29, 'HENRY', 'Jade', 'jade.henry@gsb.com', '0654238754', '1992-08-30', '250 Rue Victor Hugo ', 'Lyon', '69004', '2016-08-07', 'comptable', '0230782c6665a4465ee7ddaf7207935a', 2),
+(30, 'BERNARD', 'Christophe', 'bernard.christophe@gsb.com', '0621253954', '1987-01-04', '9 Avenue Michel ', 'St-Genis', '01630', '2009-08-05', 'visiteur', 'dcaa6e60155776107c638af755498759', 1);
 
 --
 -- Contraintes pour les tables déchargées

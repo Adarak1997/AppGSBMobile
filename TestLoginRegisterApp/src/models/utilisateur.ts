@@ -10,7 +10,6 @@ export class Utilisateur {
     adresse:string;
     ville:string;
     code_postal:string;
-    tel: string;
     date_embauche:string;
     pseudo:string;
     mdp:string;

@@ -8,8 +8,7 @@ $password = '';
 
 $bdd = new PDO("mysql:host=$host_name; dbname=$database;", $user_name, $password);
 
-$queryDFF = $bdd->prepare('
-      SELECT details_frais_forfait.id as id, details_frais_forfait.quantite as quantite,details_frais_forfait.etat_id as etat, frais_forfait.montant as montant, frais_forfait.libelle as libelle
+$queryDFF = $bdd->prepare('SELECT details_frais_forfait.id as id, details_frais_forfait.quantite as quantite,details_frais_forfait.etat_id as etat, frais_forfait.montant as montant, frais_forfait.libelle as libelle
       FROM details_frais_forfait
       INNER JOIN frais_forfait ON details_frais_forfait.frais_forfait_id = frais_forfait.id
       WHERE fiche_frais_id = :fiche_frais_id

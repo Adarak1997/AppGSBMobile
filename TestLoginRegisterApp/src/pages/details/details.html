@@ -20,18 +20,18 @@
         Vos frais forfaitisés ({{totalFraisForfaitises}})
       </ion-list-header>
 
-    <ion-item *ngFor="let details of detailsFraisForfait">
-      <h2 *ngIf="details.libelle =='nuitee'">{{details.quantite}}x nuit(s)</h2>
-      <h2 *ngIf="details.libelle =='kilometrage'">{{details.quantite}}x kilomètre(s)</h2>
-      <h2 *ngIf="details.libelle =='repas_midi'">{{details.quantite}}x repas midi</h2>
-      <h2 *ngIf="details.libelle =='relais_etape'">{{details.quantite}}x relais étape</h2>
+    <ion-item *ngFor="let fraisforfaitise of fraisForfaitises">
+      <h2 *ngIf="fraisforfaitise.libelle =='nuitee'">{{fraisforfaitise.quantite}}x nuit(s)</h2>
+      <h2 *ngIf="fraisforfaitise.libelle =='kilometrage'">{{fraisforfaitise.quantite}}x kilomètre(s)</h2>
+      <h2 *ngIf="fraisforfaitise.libelle =='repas_midi'">{{fraisforfaitise.quantite}}x repas midi</h2>
+      <h2 *ngIf="fraisforfaitise.libelle =='relais_etape'">{{fraisforfaitise.quantite}}x relais étape</h2>
           <span item-end>
-            {{details.quantite * details.montant}}€
+            {{fraisforfaitise.quantite * fraisforfaitise.montant}}€
           </span>
-          <span *ngIf="details.etat == 2" item-end>
+          <span *ngIf="fraisforfaitise.etat == 2" item-end>
             <ion-icon name="checkmark" color="secondary"></ion-icon>
           </span>
-          <span *ngIf="details.etat == 3" item-end>
+          <span *ngIf="fraisforfaitise.etat == 3" item-end>
             <ion-icon name="close" color="danger"></ion-icon>
           </span>
      </ion-item> 
@@ -44,7 +44,7 @@
     Vos frais non forfaitisés ({{totalFraisNonForfaitises}})
     </ion-list-header>
 
-      <ion-item *ngFor="let detailsnon of FraisNonForfaitises">
+      <ion-item *ngFor="let detailsnon of fraisNonForfaitises">
         {{detailsnon.libelle}}
         <span item-end>{{detailsnon.montant}}€</span>
         <span *ngIf="detailsnon.etat == 2" item-end>

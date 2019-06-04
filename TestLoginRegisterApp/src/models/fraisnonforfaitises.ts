@@ -5,4 +5,5 @@ export class FraisNonForfaitises {
     libelle : string;
     montant : number;
     fiche_frais_id : FicheFrais;
+    prix: number;
 }

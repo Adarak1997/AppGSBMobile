@@ -9,5 +9,5 @@ export class FicheFrais{
     mois: number;
     annee: number;
     etat: Etat;
-    utilisateur: Utilisateur;
+    montant: number;
 }

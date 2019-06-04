@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
-import { FicheFrais } from '../../models/fichefrais';
+import { FicheFrais } from './../../models/fichefrais';
 import { AjoutfichePage } from '../ajoutfiche/ajoutfiche';
 import { DetailsPage } from '../details/details';
-import { FichefraisProvider} from '../../providers/fichefrais/fichefrais';
+import { FichefraisProvider} from './../../providers/fichefrais/fichefrais';
 import { Storage } from '@ionic/storage';
 
 
@@ -23,57 +23,38 @@ export class FichePage {
 
   moisLibelle = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Décembre']
 
-  ficheFrais: FicheFrais[];
+  ficheFrais: Array<FicheFrais>;
   total: number;
 
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public ficheFraisProvider:FichefraisProvider, private storage: Storage) {
   
-
-    // ficheFraisProvider.getAll().subscribe((datas)=>{
-    //   this.ficheFrais = datas as FicheFrais[];
-    //   debugger;
-    // });
-      this.storage.get('session_storage').then((datas) =>{
-        ficheFraisProvider.getById(datas['id']).subscribe((d)=>{
-        this.ficheFrais = d as FicheFrais[];
-        this.total = this.ficheFrais.length;
-        console.log(d);
-        debugger;
-        
-      });
+    ficheFraisProvider.getAll().subscribe((datas) =>{
+      this.ficheFrais = datas['fiche_frais'] as Array<FicheFrais>;
+      this.total = this.ficheFrais.length;
     });
+    
   }
 
   
-
-
-    
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad FichePage');
   }
   
   refresh(){
-    this.storage.get('session_storage').then((datas) =>{
-      this.ficheFraisProvider.getById(datas['id']).subscribe((d)=>{
-      this.ficheFrais = d as FicheFrais[];
+    this.ficheFraisProvider.getAll().subscribe((datas) =>{
+      this.ficheFrais = datas['fiche_frais'] as Array<FicheFrais>;
       this.total = this.ficheFrais.length;
-      
-      
     });
-  });
 }
   
 
-  ajoutfiche(){
-    this.navCtrl.push(AjoutfichePage);
-  }
+  
 
   details(fiche){
     
-    this.navCtrl.push('DetailsPage', { fiche: fiche });
+    this.navCtrl.push(DetailsPage, { fiche: fiche });
   }
  
 
